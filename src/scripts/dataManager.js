@@ -34,9 +34,37 @@ function getStoredPageTheme() {
 
 // Create / Update localstorage
 
+
+/**
+ * Description placeholder
+ */
 function setCssThemesToStorage() {
     let dataAsJsonString = JSON.stringify(cssThemes);
     localStorage.setItem("cssThemes", dataAsJsonString);
 }
+
+function setPageThemeToStorage() {
+    localStorage.setItem("pageTheme", pageTheme);
+}
+
+
+
+//Check if data exists,
+//if it does, retrieve it,
+//else, set default variable to localstorage
+
+if (localStorage.getItem("pageTheme") && localStorage.getItem("cssThemes").length > 0) {
+    getStoredCssThemes();
+    getStoredPageTheme();
+} else {
+    setCssThemesToStorage();
+    setPageThemeToStorage();
+}
+
+
+
+
+
+
 
 // Delete localstorage
